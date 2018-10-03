@@ -6,7 +6,7 @@ class welcome extends AppController {
     }
 
     public function nav(){
-        $navLabels = ["welcome"=>"Home","about"=>"About","link"=>"Link"];
+        $navLabels = ["welcome"=>"Home <span class='sr-only'>(current)</span>","about"=>"About","link"=>"Link"];
         $this->getView("header",$navLabels);
     }
 
@@ -20,7 +20,6 @@ class welcome extends AppController {
 $display = new welcome(); 
 $display->nav();
 $this->getView("welcome");
-$display->body();
 $this->getView("footer");
 
 ?>

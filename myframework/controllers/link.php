@@ -6,7 +6,7 @@ class link extends AppController {
     }
 
     public function nav(){
-        $navLabels = ["welcome"=>"Home","about"=>"About","link"=>"Link"];
+        $navLabels = ["welcome"=>"Home","about"=>"About","link"=>"Link<span class='sr-only'>(current)</span>"];
         $this->getView("header",$navLabels);
     }
 
