@@ -28,27 +28,22 @@ class welcome extends AppController {
         if(!filter_var($_POST["email"],FILTER_VALIDATE_EMAIL)) {
             $this->getView("contactInvalid");
             $this->getView("footer");
-            var_dump($_POST);
         } else if (strlen($_POST["password"]) <= '9') {
             $_POST["password"] = ''; 
             $this->getView("contactInvalid");
             $this->getView("footer");
-            var_dump($_POST);
         } else if (!isset($_POST['checkbox1'])) { 
             $this->getView("contactInvalid");
             $this->getView("footer");
-            var_dump($_POST);
         } else if ($_POST['textarea'] == '') { 
             $this->getView("contactInvalid");
             $this->getView("footer");
-            var_dump($_POST);
         } else {
             echo '<script type="text/javascript">'; 
             echo 'alert("Your form has been submitted.");'; 
             echo 'window.location.href = "/";';
             echo '</script>';
         }
-        var_dump($_POST["password"]);
     }
 
     public function ajax(){

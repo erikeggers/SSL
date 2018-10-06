@@ -78,12 +78,14 @@ required>
         $.ajax({
             method: "POST", 
             url: '/welcome/ajax',
-            data: {email: $("#email").val(), password: $("#password").val()},
+            data: {email: $("#loginemail").val(), password: $("#loginpassword").val()},
             success: function( response ) {
                 console.log(response);
                 if (response=="welcome") {
+                    alert("Login successful");
+                    window.location.href = "/";
                 } else {
-                    $("form").addClass("was-validated");
+                    alert("Login unsuccessful, please try again");
                 }
             }
         });
