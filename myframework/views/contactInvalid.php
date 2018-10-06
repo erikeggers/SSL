@@ -5,23 +5,33 @@
         <form action="/welcome/contactRecv" method="POST" class="was-validated">
             <div class="form-group">
                 <label for="email">Email</label>
-                <input name="email" type="email" class="form-control" id="email" placeholder="Enter a valid email" value="<?php echo isset($_POST["email"]) ? $_POST["email"] : ''; ?>" required>
+                <input name="email" type="email" class="form-control" id="email" placeholder="Email" value="<?php echo isset($_POST["email"]) ? $_POST["email"] : ''; ?>" required>
+                <div class="invalid-feedback">
+                    Please enter a valid email
+                </div>
             </div>
             <div class="form-group">
                 <label for="password">Password (At least 10 characters)</label>
-                <input name="password" type="password" class="form-control" id="password" placeholder="Please make sure your password is at least 10 characters" value="<?php echo isset($_POST["password"]) ? $_POST["password"] : ''; ?>" required>
+                <input name="password" type="password" class="form-control" id="password" placeholder="Password" value="<?php echo isset($_POST["password"]) ? $_POST["password"] : ''; ?>" required>
+                <div class="invalid-feedback">
+                    Please enter a valid password that is at least 10 characters
+                </div>
             </div>
             <div class="form-group">
                 <label for="selectExample">Select</label>
-                <select class="form-control" id="selectExample" name="selection">
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
+                <select class="form-control" id="selectExample" name="selection" required>
+                    <option value="">Select your option</option>
+                    <option value="Option 1" <?php if (isset($_POST["selection"])) {echo ($_POST["selection"]=='Option 1')?'selected':'';} ?>>Option 1</option>
+                    <option value="Option 2" <?php if (isset($_POST["selection"])) {echo ($_POST["selection"]=='Option 2')?'selected':'';} ?>>Option 2</option>
+                    <option value="Option 3" <?php if (isset($_POST["selection"])) {echo ($_POST["selection"]=='Option 3')?'selected':'';} ?>>Option 3</option>
                 </select>
+                <div class="invalid-feedback">
+                    Please select one
+                </div>
             </div>
             <div class="form-group">
                 <div class="form-check">
-                    <input name="radios" class="form-check-input" type="radio" name="radioExample" id="radioExample1" value="Cool" <?php if (isset($_POST["radios"])) {echo ($_POST["radios"]=='Awesome')?'checked':'';} ?> required>
+                    <input name="radios" class="form-check-input" type="radio" name="radioExample" id="radioExample1" value="Cool" <?php if (isset($_POST["radios"])) {echo ($_POST["radios"]=='Cool')?'checked':'';} ?> required>
                     <label class="form-check-label" for="radioExample1">
                         Cool radio
                     </label>

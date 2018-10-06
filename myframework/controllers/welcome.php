@@ -32,7 +32,10 @@ class welcome extends AppController {
             $_POST["password"] = ''; 
             $this->getView("contactInvalid");
             $this->getView("footer");
-        } else if ($_POST['radios'] != 'Cool' || $_POST['radios'] != 'Awesome') { 
+        } else if ($_POST['selection'] == ''){ 
+            $this->getView("contactInvalid");
+            $this->getView("footer");
+        } else if (!isset($_POST['radios'])) { 
             $this->getView("contactInvalid");
             $this->getView("footer");
         } else if (!isset($_POST['checkbox1'])) { 
@@ -50,7 +53,6 @@ class welcome extends AppController {
     }
 
     public function ajax(){
-        //var_dump($_REQUEST);
         if (@$_REQUEST["email"]=="ssl@ssl.com") {
             echo "welcome";
         } else {

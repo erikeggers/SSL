@@ -14,9 +14,10 @@
             <div class="form-group">
                 <label for="selectExample">Select</label>
                 <select class="form-control" id="selectExample" name="selection">
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
+                    <option disabled selected>Select your option</option>
+                    <option value="Option 1">Option 1</option>
+                    <option value="Option 2">Option 2</option>
+                    <option value="Option 3">Option 3</option>
                 </select>
             </div>
             <div class="form-group">
