@@ -34,22 +34,16 @@
                 </div> 
             </div>
             <div class="form-group">
-                <div class="form-check">
-                    <input name="checkbox1" class="form-check-input" type="checkbox" value="Cool checkbox" id="checkExample1">
-                    <label class="form-check-label" for="checkExample1">
-                    Cool checkbox
-                    </label>
-                </div>
-                <div class="form-check">
-                    <input name="checkbox2" class="form-check-input" type="checkbox" value="Awesome checkbox" id="checkExample2">
-                    <label class="form-check-label" for="checkExample2">
-                        Awesome checkbox
-                    </label>
-                </div>
-            </div>
-            <div class="form-group">
                 <label  for="textareaExample">Textarea</label>
                 <textarea name="textarea" class="form-control" id="textareaExample" rows="3"></textarea>
+            </div>
+            <div class="form-group">
+                <div class="form-check">
+                    <input name="checkbox1" class="form-check-input" type="checkbox" value="yes" id="checkExample1">
+                    <label class="form-check-label" for="checkExample1">
+                        I agree to be contacted by Website
+                    </label>
+                </div>
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>

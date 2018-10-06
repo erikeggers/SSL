@@ -5,11 +5,11 @@
         <form action="/welcome/contactRecv" method="POST" class="was-validated">
             <div class="form-group">
                 <label for="email">Email</label>
-                <input name="email" type="email" class="form-control" id="email" placeholder="Enter a valid email" required value="<?php echo isset($_POST["email"]) ? $_POST["email"] : ''; ?>">
+                <input name="email" type="email" class="form-control" id="email" placeholder="Enter a valid email" value="<?php echo isset($_POST["email"]) ? $_POST["email"] : ''; ?>" required>
             </div>
             <div class="form-group">
                 <label for="password">Password (At least 10 characters)</label>
-                <input name="password" type="password" class="form-control" id="password" placeholder="Please make sure your password is at least 10 characters" required>
+                <input name="password" type="password" class="form-control" id="password" placeholder="Please make sure your password is at least 10 characters" value="<?php echo isset($_POST["password"]) ? $_POST["password"] : ''; ?>" required>
             </div>
             <div class="form-group">
                 <label for="selectExample">Select</label>
@@ -21,35 +21,36 @@
             </div>
             <div class="form-group">
                 <div class="form-check">
-                    <input name="radios" class="form-check-input" type="radio" name="radioExample" id="radioExample1" value="Cool" checked>
+                    <input name="radios" class="form-check-input" type="radio" name="radioExample" id="radioExample1" value="Cool" <?php echo ($_POST["radios"]=='Cool')?'checked':'' ?>>
                     <label class="form-check-label" for="radioExample1">
                         Cool radio
                     </label>
                 </div>
                 <div class="form-check">
-                    <input name="radios" class="form-check-input" type="radio" name="radioExample" id="radioExample2" value="Awesome">
+                    <input name="radios" class="form-check-input" type="radio" name="radioExample" id="radioExample2" value="Awesome" <?php echo ($_POST["radios"]=='Awesome')?'checked':'' ?>>
                     <label class="form-check-label" for="radioExample2">
                         Awesome radio
                     </label>
                 </div> 
             </div>
             <div class="form-group">
-                <div class="form-check">
-                    <input name="checkbox1" class="form-check-input" type="checkbox" value="Cool checkbox" id="checkExample1">
-                    <label class="form-check-label" for="checkExample1">
-                    Cool checkbox
-                    </label>
-                </div>
-                <div class="form-check">
-                    <input name="checkbox2" class="form-check-input" type="checkbox" value="Awesome checkbox" id="checkExample2">
-                    <label class="form-check-label" for="checkExample2">
-                        Awesome checkbox
-                    </label>
+                <label  for="textareaExample">Textarea</label>
+                <textarea name="textarea" class="form-control" id="textareaExample" rows="3" required><?php echo isset($_POST["textarea"]) ? $_POST["textarea"] : ''; ?></textarea>
+                <div class="invalid-feedback">
+                    Do not leave empty
                 </div>
             </div>
             <div class="form-group">
-                <label  for="textareaExample">Textarea</label>
-                <textarea name="textarea" class="form-control" id="textareaExample" rows="3"></textarea>
+                <div class="form-check">
+                    <input name="checkbox1" class="form-check-input" type="checkbox" value="yes" id="checkExample1" <?php echo isset($_POST["checkbox1"]) ? 'checked' : ''; ?>
+required>
+                    <label class="form-check-label" for="checkExample1">
+                        I agree to be contacted by Website
+                    </label>
+                    <div class="invalid-feedback">
+                        You must agree one before submitting
+                    </div>
+                </div>
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
