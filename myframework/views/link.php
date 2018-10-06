@@ -23,5 +23,23 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
 <script src="../../assets/js/bootstrap.min.js"></script>
 <script src="../../assets/js/main.js"></script>
+<script>
+        $("#ajaxsubmit").click(function(){
+            $.ajax({
+                method: "POST", 
+                url: '/welcome/ajax',
+                data: {email: $("#loginemail").val(), password: $("#loginpassword").val()},
+                success: function( response ) {
+                    console.log(response);
+                    if (response=="welcome") {
+                        alert("Login successful");
+                        window.location.href = "/";
+                    } else {
+                        alert("Login unsuccessful, please try again");
+                    }
+                }
+            });
+        });
+    </script>
 </body>
 

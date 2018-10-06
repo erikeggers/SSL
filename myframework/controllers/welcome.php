@@ -5,21 +5,54 @@ class welcome extends AppController {
         //$this->getView("welcome");
     }
 
-    public function nav(){
-        $navLabels = ["welcome"=>"Home <span class='sr-only'>(current)</span>","about"=>"About","link"=>"Link"];
-        $this->getView("header",$navLabels);
+    public function index(){
+        $this->getview("header", array("pagename"=>"welcome"));
+        $this->getView("welcome");
+        $this->getView("footer");
     }
 
-    public function body(){
-        $bodyText = "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Doloremque aliquam corporis eos, distinctio minima excepturi ratione consequuntur tempore sunt ex veniam quia consectetur aliquid quidem hic commodi reiciendis necessitatibus voluptates!";
-        $this->getView("body",$bodyText);
+    public function about(){
+        $this->getview("header", array("pagename"=>"about"));
+        $this->getView("about");
+        $this->getView("footer");
     }
+
+    public function contact(){
+        $this->getview("header", array("pagename"=>"contact"));
+        $this->getView("contact");
+        $this->getView("footer");
+    }
+
+    public function contactRecv(){
+        $this->getview("header", array("pagename"=>"contact"));
+        
+        if(!filter_var($_POST["email"],FILTER_VALIDATE_EMAIL)) {
+            $this->getView("contactInvalid");
+            $this->getView("footer");
+            var_dump($_POST);
+        } else if (strlen($_POST["password"]) <= '9') { 
+            $this->getView("contactInvalid");
+            $this->getView("footer");
+            var_dump($_POST);
+        } else {
+            echo '<script type="text/javascript">'; 
+            echo 'alert("Your form has been submitted.");'; 
+            echo 'window.location.href = "/";';
+            echo '</script>';
+        }
+    }
+
+    public function ajax(){
+        //var_dump($_REQUEST);
+        if (@$_REQUEST["email"]=="ssl@ssl.com") {
+            echo "welcome";
+        } else {
+            echo "invalid information";
+        }
+        
+    }
+
 
 }
-
-$display = new welcome(); 
-$display->nav();
-$this->getView("welcome");
-$this->getView("footer");
 
 ?>
