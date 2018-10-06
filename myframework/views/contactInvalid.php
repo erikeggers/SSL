@@ -21,17 +21,20 @@
             </div>
             <div class="form-group">
                 <div class="form-check">
-                    <input name="radios" class="form-check-input" type="radio" name="radioExample" id="radioExample1" value="Cool" <?php echo ($_POST["radios"]=='Cool')?'checked':'' ?>>
+                    <input name="radios" class="form-check-input" type="radio" name="radioExample" id="radioExample1" value="Cool" <?php if (isset($_POST["radios"])) {echo ($_POST["radios"]=='Awesome')?'checked':'';} ?> required>
                     <label class="form-check-label" for="radioExample1">
                         Cool radio
                     </label>
                 </div>
                 <div class="form-check">
-                    <input name="radios" class="form-check-input" type="radio" name="radioExample" id="radioExample2" value="Awesome" <?php echo ($_POST["radios"]=='Awesome')?'checked':'' ?>>
+                    <input name="radios" class="form-check-input" type="radio" name="radioExample" id="radioExample2" value="Awesome" <?php if (isset($_POST["radios"])) {echo ($_POST["radios"]=='Awesome')?'checked':'';} ?>>
                     <label class="form-check-label" for="radioExample2">
                         Awesome radio
                     </label>
-                </div> 
+                    <div class="invalid-feedback">
+                        Please select one
+                    </div>
+                </div>
             </div>
             <div class="form-group">
                 <label  for="textareaExample">Textarea</label>

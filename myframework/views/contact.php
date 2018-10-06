@@ -21,7 +21,7 @@
             </div>
             <div class="form-group">
                 <div class="form-check">
-                    <input name="radios" class="form-check-input" type="radio" name="radioExample" id="radioExample1" value="Cool" checked>
+                    <input name="radios" class="form-check-input" type="radio" name="radioExample" id="radioExample1" value="Cool">
                     <label class="form-check-label" for="radioExample1">
                         Cool radio
                     </label>

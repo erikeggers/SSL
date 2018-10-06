@@ -32,6 +32,9 @@ class welcome extends AppController {
             $_POST["password"] = ''; 
             $this->getView("contactInvalid");
             $this->getView("footer");
+        } else if ($_POST['radios'] != 'Cool' || $_POST['radios'] != 'Awesome') { 
+            $this->getView("contactInvalid");
+            $this->getView("footer");
         } else if (!isset($_POST['checkbox1'])) { 
             $this->getView("contactInvalid");
             $this->getView("footer");
