@@ -22,7 +22,6 @@ class welcome extends AppController {
         $random = substr( md5(rand()), 0, 7);
         $_SESSION["cap"]=$random;
         $this->getView("contact",array("cap"=>$random)); 
-        $this->getView("contact");
         $this->getView("footer");
     }
 
