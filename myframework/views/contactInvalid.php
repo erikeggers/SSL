@@ -65,6 +65,12 @@ required>
                     </div>
                 </div>
             </div>
+            <div>
+            <?echo "<img src='/assets/image1.png'>";?>
+                    <br/>
+                        <label for="captcha">Enter Captcha </label>
+                        <input name="captcha" type="captcha" id="captcha"  placeholder="">
+                    </div>
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
     </div>

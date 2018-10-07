@@ -18,7 +18,10 @@ class welcome extends AppController {
     }
 
     public function contact(){
-        $this->getview("header", array("pagename"=>"contact"));
+        $this->getView("header", array("pagename"=>"contact"));
+        $random = substr( md5(rand()), 0, 7);
+        $_SESSION["cap"]=$random;
+        $this->getView("contact",array("cap"=>$random)); 
         $this->getView("contact");
         $this->getView("footer");
     }
@@ -43,6 +46,12 @@ class welcome extends AppController {
             $this->getView("footer");
         } else if ($_POST['textarea'] == '') { 
             $this->getView("contactInvalid");
+            $this->getView("footer");
+        } else if ($_POST['captcha'] != $_SESSION["cap"]) {
+            echo "<div class='container' style='margin-top:80px'>";
+            echo "Invalid captcha, try again"; 
+            echo "<br><a href='/welcome/contact'>Click here to go back</a>";
+            echo "</div>";
             $this->getView("footer");
         } else {
             echo '<script type="text/javascript">'; 

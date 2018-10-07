@@ -28,40 +28,28 @@
           <li <?=@$data["pagename"]=="about"?'class="active nav-item"':'class="nav-item"'?>><a href="/welcome/about" class='nav-link'>About</a></li>
           <li <?=@$data["pagename"]=="contact"?'class="active nav-item"':'class="nav-item"'?>><a href="/welcome/contact" class='nav-link'>Contact</a></li>
       </ul>
-      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-        Sign In
-      </button>
+      <span style="color:red"><?=@$_REQUEST["msg"]?$_REQUEST["msg"]:'';?></span>
+      <?if(@$_SESSION["loggedin"] && @$_SESSION["loggedin"]==1) {?>
+        <form class="navbar-form navbar-right">
+            <a href="/profile">Profile</a>
+            <a href="/auth/logout">Logout</a>
+        </form>
+      <?}else{?>
+        <form class="navbar-form navbar-right" method="post" action="/auth/login">
+          <div class="form-row">
+            <div class="form-group col-md-4">
+                <input type="text" class="form-control" name="username" placeholder="Username">
+            </div>
+            <div class="form-group col-md-4">
+                <input type="password" class="form-control" name="password" placeholder="Password">
+            </div>
+            <div class="form-group col-md-4">
+            <button type="submit" class="btn btn-default">Log In</button>
+            </div>
+          </div>
+        </form>
+      <?}?>
     </div>
   </nav>
-
-    <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Log Into Your Account</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body was-validated">
-                <form action="/welcome/contactRecv" method="POST">
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <input name="email" type="email" class="form-control" id="loginemail" placeholder="Email" required>
-                </div>
-                <div class="form-group">
-                    <label for="password">Password</label>
-                    <input name="password" type="password" class="form-control" id="loginpassword" placeholder="Password" required>
-                </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                <input type="button" class="btn btn-primary" value="Sign In" id="ajaxsubmit"></input>
-            </div>
-            </div>
-        </div>
-    </div>
 </header>
 
