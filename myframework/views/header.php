@@ -25,7 +25,7 @@
     <div class="collapse navbar-collapse" id="navbarCollapse">
       <ul class="navbar-nav mr-auto">
           <li <?=@$data["pagename"]=="welcome"?'class="active nav-item"':'class="nav-item"'?>><a href="/welcome" class='nav-link'>Home</a></li>
-          <li <?=@$data["pagename"]=="about"?'class="active nav-item"':'class="nav-item"'?>><a href="/welcome/about" class='nav-link'>About</a></li>
+          <li <?=@$data["pagename"]=="about"?'class="active nav-item"':'class="nav-item"'?>><a href="/about" class='nav-link'>About</a></li>
           <li <?=@$data["pagename"]=="contact"?'class="active nav-item"':'class="nav-item"'?>><a href="/welcome/contact" class='nav-link'>Contact</a></li>
       </ul>
       <span style="color:red"><?=@$_REQUEST["msg"]?$_REQUEST["msg"]:'';?></span>

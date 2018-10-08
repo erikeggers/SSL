@@ -11,12 +11,6 @@ class welcome extends AppController {
         $this->getView("footer");
     }
 
-    public function about(){
-        $this->getview("header", array("pagename"=>"about"));
-        $this->getView("about");
-        $this->getView("footer");
-    }
-
     public function contact(){
         $this->getView("header", array("pagename"=>"contact"));
         $random = substr( md5(rand()), 0, 7);
