@@ -31,7 +31,7 @@
       <span style="color:red"><?=@$_REQUEST["msg"]?$_REQUEST["msg"]:'';?></span>
       <?if(@$_SESSION["loggedin"] && @$_SESSION["loggedin"]==1) {?>
         <form class="navbar-form navbar-right">
-            <a href="/profile">Profile</a>
+            <a href="/profile">Profile</a><span> | </span>
             <a href="/auth/logout">Logout</a>
         </form>
       <?}else{?>

@@ -6,16 +6,32 @@ class auth extends AppController {
     }
 
     public function login(){
-        var_dump($_SESSION);
         if ($_REQUEST["username"] && $_REQUEST["password"]) {
-            if ($_REQUEST["username"]=="mike@aol.com" && $_REQUEST["password"]=="password") {
-                $_SESSION["loggedin"]=1;
-                header("Location:/welcome");
-            } else {
-                header("Location:/welcome?msg=Bad Login");
+
+            $lines = file('assets/credentials.txt');
+            
+            $userArray = array();
+
+            foreach($lines as $line) {
+                $items = explode('|', $line, 3);
+                $userArray[] = $items;
+            }
+
+            for ($x = 0; $x <= count($userArray)-1; $x++) {
+                if ($userArray[$x][0] == $_REQUEST["username"] && $userArray[$x][1] == $_REQUEST["password"]) {
+                    $_SESSION["loggedin"]=1;
+                    $_SESSION["username"]=$_REQUEST["username"];
+                    $_SESSION["bio"]=$userArray[$x][2];
+                    header("Location:/welcome");
+                    return;
+                } else {
+                    header("Location:/welcome?msg=Bad Login");
+                }
             }
         } else {
-            header("Location:/welcome?msg=Bad Login");
+            
+                header("Location:/welcome?msg=Bad Login");
+        
         }
     }
 
