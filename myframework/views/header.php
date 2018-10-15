@@ -45,6 +45,7 @@
             </div>
             <div class="form-group col-md-4">
             <button type="submit" class="btn btn-default">Log In</button>
+            <a href="/registration">Sign Up</a>
             </div>
           </div>
         </form>

@@ -12,7 +12,7 @@ class users {
     }
     public function add($sql, $value=array()) {
         $this->sql = $this->db->prepare($sql);
-        $result = $this->db->execute($value);
+        $result = $this->sql->execute($value);
     }
     public function delete($sql, $value=array()) {
 
