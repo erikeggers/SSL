@@ -2,12 +2,12 @@
 
     <main role="main" style="padding-top: 80px;">
     <div class="container">
-        <p><a href="/about/showAddForm">Add New</a></p>
-        <?
-            foreach ($data as $fruit ) {
-                echo $fruit["name"]."<a href='/about/showEditForm/?name=".$fruit["name"]."&id=".$fruit["id"]."'>EDIT</a> <a href='/about/delete/?id=".$fruit["id"]."'>DELETE</a><br>";
-            }
-        ?>
+        <h1>Edit <?echo $_GET["name"]?></h1>
+
+        <form action="/about/editAction/?id=<?php echo ($_GET["id"]); ?>" method="post">
+            <input type="text" name="name" placeholder="Bananas?" value="<?php echo ($_GET["name"]); ?>"/>
+            <input type="submit"/>
+        </form>
     </div>
 
 

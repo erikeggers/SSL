@@ -1,36 +1,23 @@
 <?php
 
 class auth extends AppController {
-    public function __construct(){
-
+    public function __construct($parent){
+        $this->parent = $parent;
     }
 
     public function login(){
         if ($_REQUEST["username"] && $_REQUEST["password"]) {
+            $data = $this->parent->getModel("users")->select(
+                'select * from users where email = ? and password = ?',
+                array($_REQUEST["username"], sha1($_REQUEST["password"])));
+            if ($data) {
+                $_SESSION["loggedin"]=1;
+                header("Location:/welcome");
 
-            $lines = file('assets/credentials.txt');
-            
-            $userArray = array();
-
-            foreach($lines as $line) {
-                $items = explode('|', $line, 3);
-                $userArray[] = $items;
-            }
-
-            for ($x = 0; $x <= count($userArray)-1; $x++) {
-                if ($userArray[$x][0] == $_REQUEST["username"] && $userArray[$x][1] == $_REQUEST["password"]) {
-                    $_SESSION["loggedin"]=1;
-                    $_SESSION["username"]=$_REQUEST["username"];
-                    $_SESSION["bio"]=$userArray[$x][2];
-                    header("Location:/welcome");
-                    return;
-                } else {
-                    header("Location:/welcome?msg=Bad Login");
-                }
-            }
-        } else {
+            } else {
             
                 header("Location:/welcome?msg=Bad Login");
+            }
         
         }
     }
